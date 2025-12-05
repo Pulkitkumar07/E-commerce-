@@ -2,9 +2,15 @@ import { HiOutlineUser, HiOutlineShoppingBag, HiBars3BottomRight } from "react-i
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react'
 import SearchBar from "../Common/SearchBar";
-import CartDrawer from "../Cart/CartDrawer";
+import CartDrawer from "../Layout/CartDrawer";
+import { IoIosClose } from "react-icons/io";
 const Navbar = () => {
-        const [drawerOpen, setDraweropen] = useState("true");
+        const [drawerOpen, setDraweropen] = useState(false);
+        const [navbarOpen, setNavbarOpen] = useState(false);
+        
+        const toggleNavbar = () => {
+            setNavbarOpen(true);
+        }
     return (
         <>
             <nav className='container mx-auto flex items-center justify-between py-4 px-5'>
@@ -42,13 +48,39 @@ const Navbar = () => {
                    <div className="overflow-hidden">
                         <SearchBar />
                    </div>
-                    <button className="">
+                    <button  onClick={()=>toggleNavbar()}
+                     className="">
                         <HiBars3BottomRight className="h-6 w-6 text-gray-700 md:hidden" />
                     </button>
 
                 </div>
             </nav>
             <CartDrawer drawerOpen={drawerOpen} setDraweropen={setDraweropen} />
+             
+        <div className={`  fixed top-0 left-0 h-full sm:w-1/3  w-2/6 bg-white shadow-lg transform transition-transform duration-300 z-50 ${navbarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+            <div className="flex justify-end  p-4">
+                 <button onClick={()=>setNavbarOpen(false)} className=" text-black  text-3xl font-bold ">
+                <IoIosClose />
+             </button>
+            </div>
+              <div className="p-4">
+               <h2 className="text-2xl font-semibold mb-4">Menu</h2>
+               <nav className="space-y-4">
+                <Link onClick={()=>setNavbarOpen(false)} to="#" className="block text-gray-600 hover:text-black">
+                 Men
+                </Link>
+                <Link onClick={()=>setNavbarOpen(false)} to="#" className="block text-gray-600 hover:text-black">
+                 Women
+                </Link>
+                <Link onClick={()=>setNavbarOpen(false)} to="#" className="block text-gray-600 hover:text-black">
+                 Top wear
+                </Link>
+                <Link onClick={()=>setNavbarOpen(false)} to="#" className="block text-gray-600 hover:text-black">
+                 Bottom wear
+                </Link>
+               </nav>
+             </div>
+        </div>
         </>
     )
 }
