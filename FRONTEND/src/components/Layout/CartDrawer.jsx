@@ -4,7 +4,7 @@ import CartContents from "../Cart/CartContents"
 const CartDrawer = ({ drawerOpen, setDraweropen }) => {
 
     return (
-        <div className={` flex flex-col  sm:w-1/2  md:w-2/6 h-full p-1  top-0 right-0 fixed bg-white shadow-lg transition-transform ${drawerOpen ? "translate-x-0" : "translate-x-full"}`}>
+        <div className={` flex flex-col  sm:w-1/2  md:w-2/6 h-full p-1  top-0 right-0 fixed bg-white shadow-lg z-50 transition-transform ${drawerOpen ? "translate-x-0" : "translate-x-full"}`}>
             <div className="flex  justify-end p-4">
                 <button >
                     <IoMdClose onClick={() => setDraweropen(false)} className='h-6 w-6 text-gray-600' />
