@@ -121,11 +121,11 @@ const NewArrivals = () => {
             setcanScrollRight(rightScroll)
         }
 
-        console.log({
+      /*  console.log({
             screenLeft: container.scrollLeft,
             clientWidth: container.clientWidth,
             containerScrollWidth: container.scrollWidth
-        })
+        }). */
     }
 
     useEffect(() => {

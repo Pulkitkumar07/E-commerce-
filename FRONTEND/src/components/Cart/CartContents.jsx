@@ -1,5 +1,10 @@
 import { RiDeleteBin3Line } from "react-icons/ri";
+import { useState } from "react";
 const CartContents = () => {
+   const [cartQuantity, setcartQuantity] = useState(1)
+   
+ 
+
     const cardProduct = [
         {
             productID: 1,
@@ -69,9 +74,13 @@ const CartContents = () => {
                     <div>
                         <p className="text-black">{product.name}</p>
                         <p className="text-gray-500 text-sm">size: {product.size} | color: {product.color}</p>
-                        <button className="px-2  border rounded font-medium text-xl">-</button>
+                        <button 
+                        onClick={()=>handleQuantity("minus")}
+                        className="px-2  border rounded font-medium text-xl">-</button>
                         <span className="mx-4">{product.quantity}</span>
-                        <button className="px-2  border font-medium rounded text-xl">+</button>
+                        <button
+                        onClick={()=>handleQuantity("plus")}
+                         className="px-2  border font-medium rounded text-xl">+</button>
                     </div>
                 </div>
 
